@@ -9,7 +9,7 @@ env:
   AWS_REGION: eu-north-1
   ECR_REPOSITORY: mon-repo-cicd
   ECS_CLUSTER: cicd-app-cluster
-  ECS_SERVICE: cicd-app-service
+  ECS_SERVICE: cicd-app-definition-service-xhmy7sqm
   ECS_TASK_DEFINITION: cicd-app-definition
 
 jobs:
