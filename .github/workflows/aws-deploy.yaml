@@ -10,7 +10,7 @@ env:
   ECR_REPOSITORY: mon-repo-cicd
   ECS_CLUSTER: cicd-app-cluster
   ECS_SERVICE: cicd-app-service
-  ECS_TASK_DEFINITION: cicd-app-task-definition
+  ECS_TASK_DEFINITION: cicd-app-definition
 
 jobs:
   test:
@@ -75,14 +75,14 @@ jobs:
 
       - name: Update ECS task definition
         id: task-def
-        uses: aws-actions/amazon-ecs-render-task-definition@v1
+        uses: aws-actions/amazon-ecs-render-task-definition@v2
         with:
           task-definition: task-definition.json
           container-name: cicd-app
           image: ${{ steps.login-ecr.outputs.registry }}/${{ env.ECR_REPOSITORY }}:${{ github.sha }}
 
       - name: Deploy to Amazon ECS
-        uses: aws-actions/amazon-ecs-deploy-task-definition@v1
+        uses: aws-actions/amazon-ecs-deploy-task-definition@v2
         with:
           task-definition: ${{ steps.task-def.outputs.task-definition }}
           service: ${{ env.ECS_SERVICE }}
