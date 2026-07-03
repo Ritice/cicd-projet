@@ -11,6 +11,6 @@ public class Hello {
 
     @GetMapping("/say")
     public String SayHello(){
-        return "Bonjour a tout le monde";
+        return "Bonjour a tout le monde...";
     }
 }
